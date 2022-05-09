@@ -12,3 +12,4 @@ body{
 .perso_ColorRougeMenu{color: #ff0000 !important;}
 .perso_ColorBleuMenu{color: #0000ff !important;}
 .perso_size20{font-size: 20px;}
+.perso_minCorpSize{min-height: 500px;}
