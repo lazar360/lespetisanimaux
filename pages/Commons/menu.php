@@ -37,8 +37,12 @@
           Conseils
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item perso_ColorRougeMenu" href="#">Action</a>
-          <a class="dropdown-item perso_ColorRougeMenu" href="#">Another action</a>
+          <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/temperatures.php">Températures</a>
+          <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/chocolat.php">Le Chocolat</a>
+          <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/plantes.php">Les plantes toxiques</a>
+          <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/sterilisation.php">Stérilisation</a>
+          <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/educateur.php">Educateur canin</a>
+
       </li>
 
       <li class="nav-item dropdown">
