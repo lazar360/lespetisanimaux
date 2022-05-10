@@ -1,14 +1,14 @@
 <?php include("../Commons/header.php"); ?>
 
-<?= (styleTitreNiveau1("Les partenaires", COLOR_ASSO)) ?>
+<?= (styleTitreNiveau1("Plantes", COLOR_CONSEILS)) ?>
 
 <div class="row no-gutters">
-    <div class="card col-auto mx-auto mt-2" style="width: 18rem;">
-        <img src="../../sources/images/Autres/updp-logo.png" class="card-img-top p-1" alt="updp-logo">
+    <div class="card col-auto mx-auto mt-2" style="width: 40rem;">
+        <img src="../../sources/images/Autres/Articles/Plantes toxiques.jpg" class="card-img-top p-1" alt="Plantes">
         <div class="card-body text-center">
-            <h5 class="text-center mt-3 perso_ColorRoseMenu perso_policeTitre perso_textShadow">UPDP 09</h5>
+            <?= (styleTitreNiveau2("Plantes", COLOR_CONSEILS)) ?>
             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id itaque cumque possimus temporibus! </p>
-            <a href="#" class="btn btn-primary">Visiter le site de l'éducatrice</a>
+            <a href="#" class="btn btn-primary">En savoir plus</a>
         </div>
     </div>
 
