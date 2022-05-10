@@ -1,7 +1,7 @@
-<?php include("../Commons/header.php"); ?>
-<h1 class="text-center mt-3 perso_ColorRoseMenu perso_policeTitre perso_textShadow">
-    Association Nos Amis - Nos Animaux (N.A.N.A) <br> Clermont (Arriège 09)
-</h1>
+<?php include("../Commons/header.php"); 
+echo(styleTitreNiveau1("Association Nos Amis - Nos Animaux (N.A.N.A) <br> Clermont (Arriège 09)", COLOR_ASSO));
+?>
+
 <div class="row align-items-center mt-5">
     <div class="col-12 col-lg-3 text-center">
         <img class="img-fluid" src="../../sources/images/Autres/logoNANA2.jpg" alt="logo" />
@@ -28,10 +28,7 @@
 
 <hr>
 
-<h1 class="text-center mt-3 perso_ColorRoseMenu perso_policeTitre perso_textShadow">
-    L'équipe
-</h1>
-
+<?= styleTitreNiveau2("L'équipe", COLOR_ASSO) ?>
 
 <div class="row align-items-center">
     <div class="col-12 col-lg-3 text-center">

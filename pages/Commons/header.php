@@ -1,4 +1,5 @@
 <?php include("../../utile/formatage.php"); ?>
+<?php include("../../utile/config.php"); ?>
 <!doctype html>
 <html lang="en">
 

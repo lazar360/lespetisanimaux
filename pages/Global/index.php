@@ -1,6 +1,7 @@
-<?php include("../Commons/header.php") ?>
+<?php include("../Commons/header.php");
+echo (styleTitreNiveau1("Ils ont besoin de vous !", COLOR_ASSO));
+?>
 
-<h2 class="text-center mt-3 perso_ColorRoseMenu perso_policeTitre perso_textShadow">Ils ont besoin de vous !</h2>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
@@ -23,7 +24,7 @@
               Description de Framboise
             </p>
             <a href="#" class="btn btn-primary">Visiter ma page</a>
-            
+
           </div>
         </div>
       </div>
@@ -54,15 +55,19 @@
 
 <div class="row">
   <div class="col-6 mt-3">
-    <h2 class="text-center mt-3 perso_ColorVertMenu perso_policeTitre perso_textShadow">
-      <img src="../../sources/images/Autres/icones/journal.png" alt="logo news" /> Nouvelles des adoptés
-    </h2>
+    <?php
+    $txt = "<img src='../../sources/images/Autres/icones/journal.png' alt='logo news'/> Nouvelles des adoptés";
+    echo (styleTitreNiveau2($txt, COLOR_ACTUS));
+    ?>
   </div>
 
   <div class="col-6 mt-3">
-    <h2 class="text-center mt-3 perso_ColorOrangeMenu perso_policeTitre perso_textShadow">
-      <img src="../../sources/images/Autres/icones/action.png" alt="logo news" />Evènements et actions
-    </h2>
+    <?php
+    $txt = "<img src='../../sources/images/Autres/icones/action.png' alt='logo news' />Evènements et actions
+    ";
+    echo (styleTitreNiveau2($txt, COLOR_PENSIONNAIRE));
+    ?>
+
   </div>
 </div>
 
@@ -83,7 +88,7 @@
   </div>
 
   <div class="col-6">
-  <div class="row no-gutters border rounded mb-4">
+    <div class="row no-gutters border rounded mb-4">
       <div class="col-auto d-none d-lg-block">
         <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" style="height: 170px;" alt="photo de framboise" />
       </div>
@@ -95,7 +100,7 @@
         <a href="#" class="btn btn-primary">Visiter ma page</a>
       </div>
     </div>
-  
+
   </div>
 </div>
 
