@@ -1,4 +1,4 @@
-<?php include("../Commons/header.php") ?>
+<?php include("../Commons/header.php"); ?>
 <h1 class="text-center mt-3 perso_ColorRoseMenu perso_policeTitre perso_textShadow">
     Association Nos Amis - Nos Animaux (N.A.N.A) <br> Clermont (Arriège 09)
 </h1>

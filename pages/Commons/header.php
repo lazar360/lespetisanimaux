@@ -1,3 +1,4 @@
+<?php include("../../utile/formatage.php"); ?>
 <!doctype html>
 <html lang="en">
 
