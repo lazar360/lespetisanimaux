@@ -12,4 +12,10 @@ body{
 .perso_ColorRougeMenu{color: #ff0000 !important;}
 .perso_ColorBleuMenu{color: #0000ff !important;}
 .perso_size20{font-size: 20px;}
+.perso_size12{font-size: 12px;}
 .perso_minCorpSize{min-height: 500px;}
+.perso_textShadow{text-shadow: 1px 1px 1px #44586e;}
+.perso_bgGreen{background-color: #c9e5b7 !important;}
+.perso_bgOrange{background-color: #f5f290 !important;}
+.perso_bgBleu{background-color: #0000ff !important;}
+.perso_bgRose{background-color: #f2c2f2 !important;}
