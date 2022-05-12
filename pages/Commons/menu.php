@@ -29,8 +29,9 @@
           Actus
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item perso_ColorVertMenu" href="#">Action</a>
-          <a class="dropdown-item perso_ColorVertMenu" href="#">Another action</a>
+        <a class="dropdown-item perso_ColorVertMenu" href="../Global/actus.php">Nouvelles des adoptés</a>
+        <a class="dropdown-item perso_ColorVertMenu" href="#">Evènements</a>
+        <a class="dropdown-item perso_ColorVertMenu" href="../Global/actus.php">Nos actions au quotidien</a>
       </li>
 
       <li class="nav-item dropdown">

@@ -21,4 +21,12 @@ function styleTitreNiveau3($text, $color){
     return $txt;
 }
 
+function styleTitrePost($text){
+    $txt = "<h2 class='my-3 perso_policeTitre perso_textShadow border-bottom border-dark'>";
+    $txt .= $text;
+    $txt .= "</h2>";
+    return $txt;
+}
+
+
 ?>
