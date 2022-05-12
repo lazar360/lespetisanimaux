@@ -22,11 +22,11 @@
             <img src="../../sources/images/Autres/logoNANA2.jpg" alt="logo" class="rounded-circle img-fluid perso_logoSize" />
           </a>
         </div>
-        <div class="col-8 m-0 p-0">
+        <div class="col-6 col-lg-8 m-0 p-0">
           <?php include '../Commons/menu.php'; ?>
         </div>
 
-        <div class="col-2 text-right pt-1 pr-4 d-none d-lg-block">
+        <div class="col-4 col-lg-2 text-right pt-1 pr-4 ">
           N.A.N.A <br> Clermont (09)
         </div>
       </div>
