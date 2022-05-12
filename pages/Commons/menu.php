@@ -19,8 +19,9 @@
           Pensionnaires
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item perso_ColorOrangeMenu" href="#">Action</a>
-          <a class="dropdown-item perso_ColorOrangeMenu" href="#">Another action</a>
+          <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php">Ils cherchent une famille</a>
+          <a class="dropdown-item perso_ColorOrangeMenu" href="#">Famille d'accueil longue durée</a>
+          <a class="dropdown-item perso_ColorOrangeMenu" href="#">Les anciens</a>
       </li>
 
       <li class="nav-item dropdown">

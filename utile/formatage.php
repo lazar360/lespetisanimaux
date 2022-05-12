@@ -14,4 +14,11 @@ function styleTitreNiveau2($text, $color){
     return $txt;
 }
 
+function styleTitreNiveau3($text, $color){
+    $txt = "<h2 class='ml-4 my-3 perso_size20 ".$color." perso_policeTitre perso_textShadow'>";
+    $txt .= $text;
+    $txt .= "</h2>";
+    return $txt;
+}
+
 ?>
