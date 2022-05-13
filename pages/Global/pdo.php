@@ -1,16 +1,4 @@
-<?php include("../Commons/header.php"); ?>
-
 <?php 
-$bdd = connexionPDO();
-$stmt = $bdd->prepare("SELECT * FROM animal");
-$stmt->execute();
-$resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt->closeCursor();
-
-echo "<pre>";
-print_r($resultats);
-
-
 function connexionPDO() {
     
     try {
@@ -24,5 +12,3 @@ function connexionPDO() {
     return $bdd;
 }
 ?>
-
-<?php include("../Commons/footer.php") ?>
