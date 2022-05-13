@@ -1,8 +1,10 @@
 <?php 
+require_once("../Global/config.php");
+
 function connexionPDO() {
     
     try {
-        $bdd = new PDO('mysql:host=localhost;dbname=bdd_animaux;charset=utf8', 'root', '');
+        $bdd = new PDO("mysql:host=".HOST_NAME.";dbname=".DATABASE_NAME.";charset=utf8", USER_NAME, PASSWORD);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         return $bdd;
     }

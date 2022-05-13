@@ -1,28 +1,47 @@
-<?php include("../Commons/header.php"); ?>
-
 <?php 
+require_once("../Global/pdo.php");
+include("../Commons/header.php"); 
+ ?>
+
+<?php
 $bdd = connexionPDO();
 $stmt = $bdd->prepare("SELECT * FROM animal");
 $stmt->execute();
-$resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
-
-echo "<pre>";
-print_r($resultats);
-
-
-function connexionPDO() {
-    
-    try {
-        $bdd = new PDO('mysql:host=localhost;dbname=bdd_animaux;charset=utf8', 'root', '');
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-        return $bdd;
-    }
-    catch(PDOException $e) {
-        die('Erreur : '.$e->getMessage());
-    }
-    return $bdd;
-}
 ?>
+
+<?php foreach($animaux as $animal): ?>
+    <p><?php echo $animal['nom_animal']; ?></p>
+    <?php endforeach; ?>
+<div class="row no-gutters">
+    <!-- <div class="col-12 col-lg-6">
+        <div class="row border-dark rounded-lg m-2 align-items-center perso_bgRose" style="height: 200px;">
+            <div class="col p-2 text-center">
+                <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" class="img-thumbnail" alt="framboise" style="max-height: 180px;">
+            </div>
+            <div class="col-2 border-left border-right border-dark text-center">
+                <img src="../../sources/images/Autres/icones/chienOk.png" class="img-fluid" alt="chien ok" style="width: 50px;">
+                <img src="../../sources/images/Autres/icones/chatOk.png" class="img-fluid" alt="chat ok" style="width: 50px;">
+                <img src="../../sources/images/Autres/icones/babyOk.png" class="img-fluid" alt="bébé ok" style="width: 50px;">
+
+            </div>
+            <div class="col-6 text-center">
+                <div class="perso_policeTitre perso_size20 mb-3">Framboise</div>
+                <div class="mb-2">Née : ++/++/++++</div>
+                <div class="my-3">
+                    <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">douce</span>
+                    <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">calme</span>
+                    <span class="badge badge-warning m-1 p-2 d-none d-md-inline">joueuse</span>
+                </div>
+                <a href="animal.php" class="btn btn-primary">Visiter ma page</a>
+            </div>
+        </div>
+    </div> -->
+
+
+</div>
+
+
 
 <?php include("../Commons/footer.php") ?>

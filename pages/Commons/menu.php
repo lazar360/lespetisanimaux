@@ -57,6 +57,13 @@
           <a class="dropdown-item perso_ColorBleuMenu" href="../Contact/mentions.php">Mentions Légales</a>
       </li>
 
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle perso_ColorBleuMenu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Test
+        </a>
+        <a class="dropdown-item" style="color: grey ;" href="../Global/test.php">Test</a>
+      </li>
+
     </ul>
   </div>
 </nav>
