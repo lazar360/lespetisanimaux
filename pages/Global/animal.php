@@ -1,20 +1,69 @@
-<?php include("../Commons/header.php"); ?>
+<?php 
+require_once("../Global/pdo.php");
+include("../Commons/header.php"); 
 
-<?= (styleTitreNiveau1("Odin", COLOR_PENSIONNAIRE)) ?>
+$bdd = connexionPDO();
+$req = '
+SELECT * 
+FROM animal 
+WHERE id_animal =:idAnimal' ;
+
+$stmt = $bdd->prepare($req);
+$stmt->bindValue(":idAnimal", $_GET["idAnimal"]);
+$stmt->execute();
+$animal = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
+//echo"<pre>";
+//print_r($animal);
+
+$stmt = $bdd->prepare('SELECT i.id_image, libelle_image, url_image, description_image 
+FROM image i 
+INNER JOIN contient c ON i.id_image = c.id_image
+INNER JOIN animal a ON a.id_animal = c.id_animal
+WHERE a.id_animal = :idAnimal
+LIMIT 1');
+$stmt->bindValue(":idAnimal", $_GET["idAnimal"]);
+$stmt->execute();
+$image = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
+
+?>
+
+<?= (styleTitreNiveau1($animal['nom_animal'], COLOR_PENSIONNAIRE)) ?>
 
 
-<div class="row border-dark rounded-lg m-2 align-items-center perso_bgGreen">
+<div class="row border-dark rounded-lg m-2 align-items-center <?= ($animal['sexe']) ? ' perso_bgBleu' : ' perso_bgRose'  ?>">
     <div class="col p-2 text-center">
-        <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" class="img-thumbnail" alt="framboise" style="max-height: 180px;">
+        <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $image['url_image'] ?>" class="img-thumbnail" alt="<?= $image['description_image'] ?>" style="max-height: 180px;">
     </div>
     <div class="col-2 col-md-1 border-left border-right border-dark text-center">
-        <img src="../../sources/images/Autres/icones/chienOk.png" class="img-fluid" alt="chien ok" style="width: 50px;">
-        <img src="../../sources/images/Autres/icones/chatOk.png" class="img-fluid" alt="chat ok" style="width: 50px;">
-        <img src="../../sources/images/Autres/icones/babyOk.png" class="img-fluid" alt="bébé ok" style="width: 50px;">
+    <?php 
+                $iconeChien = "";
+                $iconeChat = "";
+                $iconeEnfant = "";
+                
+                if($animal['ami_chien'] === "oui") $iconeChien = "chienOk";
+                else if($animal['ami_chien'] === "non") $iconeChien = "chienBar";
+                else if ($animal['ami_chien'] === "N/A") $iconeChien = "chienQuest";
+                    
+                if($animal['ami_chat'] === "oui") $iconeChat = "chatOk";
+                else if($animal['ami_chat'] === "non") $iconeChat = "chatBar";
+                else if ($animal['ami_chat'] === "N/A") $iconeChat = "chatQuest";
+                
+                if($animal['ami_enfant'] === "oui") $iconeEnfant = "babyOk";
+                else if($animal['ami_enfant'] === "non") $iconeEnfant = "babyBar";
+                else if ($animal['ami_enfant'] === "N/A") $iconeEnfant = "babyQuest";                
+                ?>
+
+                <img src="../../sources/images/Autres/icones/<?=$iconeChien ?>.png" class="img-fluid" alt="chien ok" style="width: 50px;">
+                <img src="../../sources/images/Autres/icones/<?=$iconeChat ?>.png" class="img-fluid" alt="chat ok" style="width: 50px;">
+                <img src="../../sources/images/Autres/icones/<?=$iconeEnfant ?>.png" class="img-fluid" alt="bébé ok" style="width: 50px;">
 
     </div>
     <div class="col-6 col-md-4 text-center">
-        <div class="mb-2">Née : ++/++/++++</div>
+        <div class="mb-2">Puce : <?php $text= (!empty($animal['puce'])) ? $animal['puce'] : 'Non renseignée'; echo $text;?></div>
+        <div class="mb-2">Né(e) : <?php $text= (!empty($animal['date_naissance_animal'])) ? $animal['date_naissance_animal'] : 'Date de naissance non renseignée'; echo $text;?></div>
+
         <div class="my-3">
             <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">douce</span>
             <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">calme</span>
@@ -38,13 +87,13 @@
             </ol>
             <div class="carousel-inner text-center">
                 <div class="carousel-item active">
-                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" alt="Framboise">
+                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/framboise/framboise.jpg" alt="Framboise">
                 </div>
                 <div class="carousel-item">
-                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/Chats/Odin/Odin.jpg" alt="Odin">
+                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/odin/odin.jpg" alt="Odin">
                 </div>
                 <div class="carousel-item">
-                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/Chats/Odin/Odin5.jpg" alt="Odin5">
+                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/odin/odin5.jpg" alt="Odin5">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
