@@ -19,7 +19,15 @@ $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
 ?>
 
-<?= (styleTitreNiveau1("Ils cherchent une famille", COLOR_PENSIONNAIRE)) ?>
+<?php
+$titreH1= "";
+if ($_GET["id_statut"]==ID_STATUT_A_L_ADOPTION) $titreH1 = "Ils cherchent une famille"; 
+else if($_GET["id_statut"]==ID_STATUT_ADOPTE) $titreH1 = "Les anciens";
+else if($_GET["id_statut"]==ID_STATUT_FALD) $titreH1 = "famille d'accueil longue durée";
+
+echo(styleTitreNiveau1($titreH1, COLOR_PENSIONNAIRE)) 
+?>
+
 
 <div class="row no-gutters">
     <?php foreach ($animaux as $animal) : ?>
