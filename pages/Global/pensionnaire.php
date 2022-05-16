@@ -9,8 +9,8 @@ $req = '
 SELECT * 
 FROM animal 
 WHERE id_statut =:idStatut' ;
-if($_GET['id_statut'] === ID_STATUT_ADOPTE){
-  $req = ' and id_statut = '.ID_STATUT_MORT;  
+if($_GET['id_statut'] == ID_STATUT_ADOPTE){
+  $req .= ' or id_statut = '.ID_STATUT_MORT;  
 }
 $stmt = $bdd->prepare($req);
 $stmt->bindValue(":idStatut", $_GET["id_statut"]);
