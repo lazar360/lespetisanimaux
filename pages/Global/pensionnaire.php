@@ -5,7 +5,15 @@ include("../Commons/header.php");
 
 <?php
 $bdd = connexionPDO();
-$stmt = $bdd->prepare("SELECT * FROM animal");
+$req = '
+SELECT * 
+FROM animal 
+WHERE id_statut =:idStatut' ;
+if($_GET['id_statut'] === ID_STATUT_ADOPTE){
+  $req = ' and id_statut = '.ID_STATUT_MORT;  
+}
+$stmt = $bdd->prepare($req);
+$stmt->bindValue(":idStatut", $_GET["id_statut"]);
 $stmt->execute();
 $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
@@ -29,7 +37,7 @@ $stmt->closeCursor();
         ?>
         
         <div class="col-12 col-lg-6">
-            <div class="row border-dark rounded-lg m-2 align-items-center perso_bgRose" style="height: 200px;">
+            <div class="row border-dark rounded-lg m-2 align-items-center <?= ($animal['sexe']) ? "perso_bgBleu" : "perso_bgRose" ?>" style="height: 200px;">
                 <div class="col p-2 text-center">
                     <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $image['url_image'] ?>" class="img-thumbnail" alt="<?= $image['description_image'] ?>" style="max-height: 180px;">
                 </div>
@@ -75,7 +83,7 @@ $stmt->closeCursor();
 
                     <div class="my-3">
                         <?php foreach($caracteres as $caractere) : ?>
-                        <span class="badge badge-pill badge-secondary"><?= $caractere['libelle_caractere'] ?></span>
+                        <span class="badge badge-pill badge-warning"><?= $caractere['libelle_caractere'] ?></span>
                         <?php endforeach; ?>
                     </div>
                     <a href="animal.php?idAnimal=<?=$animal['id_animal']?>" class="btn btn-primary">Visiter ma page</a>

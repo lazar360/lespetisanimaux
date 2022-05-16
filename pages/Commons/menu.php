@@ -1,3 +1,7 @@
+<?php 
+require_once("../Global/config.php");
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark perso_size20">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -19,9 +23,9 @@
           Pensionnaires
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php">Ils cherchent une famille</a>
-          <a class="dropdown-item perso_ColorOrangeMenu" href="#">Famille d'accueil longue durée</a>
-          <a class="dropdown-item perso_ColorOrangeMenu" href="#">Les anciens</a>
+          <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php?id_statut=<?=ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a>
+          <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php?id_statut=<?=ID_STATUT_FALD ?>">Famille d'accueil longue durée</a>
+          <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php?id_statut=<?=ID_STATUT_ADOPTE ?>">Les anciens</a>
       </li>
 
       <li class="nav-item dropdown">

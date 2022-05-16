@@ -14,7 +14,7 @@ echo (styleTitreNiveau1("Ils ont besoin de vous !", COLOR_ASSO));
     <div class="carousel-item active">
       <div class="row no-gutters border rounded overflow-hidden mb-4 perso_bgRose">
         <div class="col-12 col-md-auto text-center">
-          <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" style="height: 250px;" alt="Photo de Framboise">
+          <img src="../../sources/images/Animaux/chat/framboise/framboise.jpg" style="height: 250px;" alt="Photo de Framboise">
         </div>
         <div class="col-12 col-md">
           <div class="col p-4 d-flex flex-column position-static">
@@ -35,7 +35,7 @@ echo (styleTitreNiveau1("Ils ont besoin de vous !", COLOR_ASSO));
     <div class="carousel-item">
       <div class="row no-gutters border rounded overflow-hidden mb-4 perso_bgRose">
         <div class="col-12 col-md-auto text-center">
-          <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" style="height: 250px;" alt="Photo de Framboise">
+          <img src="../../sources/images/animaux/chat/framboise/framboise.jpg" style="height: 250px;" alt="Photo de Framboise">
         </div>
         <div class="col-12 col-md">
           <div class="col p-4 d-flex flex-column position-static">
@@ -75,7 +75,7 @@ echo (styleTitreNiveau1("Ils ont besoin de vous !", COLOR_ASSO));
   <div class="col-6">
     <div class="row no-gutters border rounded mb-4">
       <div class="col-auto d-none d-lg-block">
-        <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" style="height: 170px;" alt="photo de framboise" />
+        <img src="../../sources/images/Animaux/chat/framboise/framboise.jpg" style="height: 170px;" alt="photo de framboise" />
       </div>
       <div class="col p-3 d-flex flex-column position-static perso_bgGreen">
         <h3 class="mb-0 mb-0 perso_policeTitre perso_ColorVertMenu perso_textShadow">Doyenne Chipie</h3>
@@ -90,7 +90,7 @@ echo (styleTitreNiveau1("Ils ont besoin de vous !", COLOR_ASSO));
   <div class="col-6">
     <div class="row no-gutters border rounded mb-4">
       <div class="col-auto d-none d-lg-block">
-        <img src="../../sources/images/Animaux/Chats/Framboise/Framboise.jpg" style="height: 170px;" alt="photo de framboise" />
+        <img src="../../sources/images/Animaux/chat/framboise/framboise.jpg" style="height: 170px;" alt="photo de framboise" />
       </div>
       <div class="col p-3 d-flex flex-column position-static perso_bgOrange">
         <h3 class="mb-0 mb-0 perso_policeTitre perso_ColorOrangeMenu perso_textShadow">Doyenne Chipie</h3>
