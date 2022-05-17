@@ -21,10 +21,10 @@ FROM image i
 INNER JOIN contient c ON i.id_image = c.id_image
 INNER JOIN animal a ON a.id_animal = c.id_animal
 WHERE a.id_animal = :idAnimal
-LIMIT 1');
+');
 $stmt->bindValue(":idAnimal", $_GET["idAnimal"]);
 $stmt->execute();
-$image = $stmt->fetch(PDO::FETCH_ASSOC);
+$image = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
 
 ?>
@@ -34,7 +34,7 @@ $stmt->closeCursor();
 
 <div class="row border-dark rounded-lg m-2 align-items-center <?= ($animal['sexe']) ? ' perso_bgBleu' : ' perso_bgRose'  ?>">
     <div class="col p-2 text-center">
-        <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $image['url_image'] ?>" class="img-thumbnail" alt="<?= $image['description_image'] ?>" style="max-height: 180px;">
+        <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $image[0]['url_image'] ?>" class="img-thumbnail" alt="<?= $image[0]['description_image'] ?>" style="max-height: 180px;">
     </div>
     <div class="col-2 col-md-1 border-left border-right border-dark text-center">
     <?php 
@@ -86,7 +86,7 @@ $stmt->closeCursor();
                 <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active bg-dark"></li>
             </ol>
             <div class="carousel-inner text-center">
-                <div class="carousel-item active">
+                <!-- <div class="carousel-item active">
                     <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/framboise/framboise.jpg" alt="Framboise">
                 </div>
                 <div class="carousel-item">
@@ -94,7 +94,7 @@ $stmt->closeCursor();
                 </div>
                 <div class="carousel-item">
                     <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/odin/odin5.jpg" alt="Odin5">
-                </div>
+                </div> -->
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -110,14 +110,23 @@ $stmt->closeCursor();
     <div class="col-12 col-lg-6">
         <div>
             <?= (styleTitreNiveau2("Qui suis-je ?", COLOR_PENSIONNAIRE)) ?>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            <?=$animal['description_animal'] ?>
         </div>
         <hr>
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iste minima non modi sed, similique totam ea magnam aspernatur dolorem temporibus perspiciatis. Praesentium minima dolorum laudantium sunt. Autem, quo minima?    
-
+        <div>
+            <img src="../../sources/images/Autres/icones/IconeAdopt.png" alt="icone adoption" width="50" height="50" class="d-block">
+            <?= $animal['adoption_description_animal']?>
+        </div>
+        <hr>
+        <div>
+            <img src="../../sources/images/Autres/icones/iconeContrat.png" alt="icone adoption" width="50" height="50" class="d-block">
+            <?= $animal['engagemet_description_animal']?>
+        </div>
+        <hr>
+        <div>
+            <img src="../../sources/images/Autres/icones/oeil.jpg" alt="icone adoption" width="50" height="50" class="d-block">
+            <?= $animal['localisation_description_animal']?>
+        </div>
 
     </div>
 </div>
