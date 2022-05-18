@@ -100,4 +100,4 @@ echo(styleTitreNiveau1($titreH1, COLOR_PENSIONNAIRE))
         </div>
     <?php endforeach; ?>
 </div>
-<?php include("../Commons/footer.php") ?>
+<?php include"../Commons/footer.php" ?>

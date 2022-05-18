@@ -24,7 +24,7 @@ WHERE a.id_animal = :idAnimal
 ');
 $stmt->bindValue(":idAnimal", $_GET["idAnimal"]);
 $stmt->execute();
-$image = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$images = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
 
 ?>
@@ -34,7 +34,7 @@ $stmt->closeCursor();
 
 <div class="row border-dark rounded-lg m-2 align-items-center <?= ($animal['sexe']) ? ' perso_bgBleu' : ' perso_bgRose'  ?>">
     <div class="col p-2 text-center">
-        <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $image[0]['url_image'] ?>" class="img-thumbnail" alt="<?= $image[0]['description_image'] ?>" style="max-height: 180px;">
+        <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $images[0]['url_image'] ?>" class="img-thumbnail" alt="<?= $images[0]['description_image'] ?>" style="max-height: 180px;">
     </div>
     <div class="col-2 col-md-1 border-left border-right border-dark text-center">
     <?php 
@@ -86,15 +86,11 @@ $stmt->closeCursor();
                 <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active bg-dark"></li>
             </ol>
             <div class="carousel-inner text-center">
-                <!-- <div class="carousel-item active">
-                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/framboise/framboise.jpg" alt="Framboise">
+                <?php foreach($images as $key => $image) : ?>
+                <div class="carousel-item <?php echo($key === 0) ? "active" : "" ?>">
+                    <img src="../../sources/images/Animaux/<?= $animal['type_animal'] ?>/<?= $image['url_image'] ?>"  class="img-thumbail" style="height: 500px;" alt="<?= $image['description_image'] ?>">
                 </div>
-                <div class="carousel-item">
-                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/odin/odin.jpg" alt="Odin">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-thumbnail" style="height: 500px;" src="../../sources/images/Animaux/chat/odin/odin5.jpg" alt="Odin5">
-                </div> -->
+                <?php endforeach;  ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
