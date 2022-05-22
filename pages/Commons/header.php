@@ -1,5 +1,5 @@
-<?php include("../../utile/formatage.php"); ?>
-<?php include("../../utile/config.php"); ?>
+<?php require_once"../../utile/formatage.php"; ?>
+<?php require_once"../../utile/config.php"; ?>
 <!doctype html>
 <html lang="en">
 

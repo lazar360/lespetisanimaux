@@ -66,11 +66,25 @@ $stmt->closeCursor();
         <div class="mb-2">Né(e) : <?php $text = (!empty($animal['date_naissance_animal'])) ? $animal['date_naissance_animal'] : 'Date de naissance non renseignée';
                                     echo $text; ?></div>
 
-        <div class="my-3">
-            <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">douce</span>
-            <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">calme</span>
-            <span class="badge badge-warning m-1 p-2 d-none d-md-inline">joueuse</span>
-        </div>
+        
+                    <?php
+                        $stmt = $bdd->prepare( 'SELECT c.libelle_caractere_m, c.libelle_caractere_f 
+                        FROM caractere c 
+                        INNER JOIN dispose d ON c.id_caractere = d.id_caractere
+                        INNER JOIN animal a ON a.id_animal = d.id_animal
+                        WHERE a.id_animal = :idAnimal');
+                        $stmt->bindValue(":idAnimal", $animal['id_animal']);
+                        $stmt->execute();
+                        $caracteres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        $stmt->closeCursor();
+                    ?>
+
+                    <div class="my-3">
+                        <?php foreach($caracteres as $caractere) : ?>
+                        <span class="badge badge-warning m-1 p-2 d-none d-sm-inline">
+                            <?= ($animal['sexe']) ? $caractere['libelle_caractere_m'] : $caractere['libelle_caractere_f']   ?></span>
+                        <?php endforeach; ?>
+                    </div>
     </div>
     <div class="col-12 col-md-4">
         Frais d'adoption : 60 € <br>

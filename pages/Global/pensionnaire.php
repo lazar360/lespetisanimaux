@@ -78,7 +78,7 @@ echo(styleTitreNiveau1($titreH1, COLOR_PENSIONNAIRE))
                     <div class="mb-2">Née : <?= $animal['date_naissance_animal'] ?></div>
                     
                     <?php
-                        $stmt = $bdd->prepare( 'SELECT c.libelle_caractere 
+                        $stmt = $bdd->prepare( 'SELECT c.libelle_caractere_m, c.libelle_caractere_f 
                         FROM caractere c 
                         INNER JOIN dispose d ON c.id_caractere = d.id_caractere
                         INNER JOIN animal a ON a.id_animal = d.id_animal
@@ -91,7 +91,8 @@ echo(styleTitreNiveau1($titreH1, COLOR_PENSIONNAIRE))
 
                     <div class="my-3">
                         <?php foreach($caracteres as $caractere) : ?>
-                        <span class="badge badge-pill badge-warning"><?= $caractere['libelle_caractere'] ?></span>
+                        <span class="badge badge-pill badge-warning">
+                            <?= ($animal['sexe']) ? $caractere['libelle_caractere_m'] : $caractere['libelle_caractere_f']   ?></span>
                         <?php endforeach; ?>
                     </div>
                     <a href="animal.php?idAnimal=<?=$animal['id_animal']?>" class="btn btn-primary">Visiter ma page</a>
