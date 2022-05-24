@@ -1,23 +1,10 @@
 <?php
 require_once("../Global/pdo.php");
+require_once("../Global/animal.dao.php");
 include("../Commons/header.php");
 ?>
 
-<?php
-$bdd = connexionPDO();
-$req = '
-SELECT * 
-FROM animal 
-WHERE id_statut =:idStatut' ;
-if($_GET['id_statut'] == ID_STATUT_ADOPTE){
-  $req .= ' or id_statut = '.ID_STATUT_MORT;  
-}
-$stmt = $bdd->prepare($req);
-$stmt->bindValue(":idStatut", $_GET["id_statut"]);
-$stmt->execute();
-$animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt->closeCursor();
-?>
+<?php $animaux = getAnimalFromStatus($_GET['id_statut']); ?>
 
 <?php
 $titreH1= "";
@@ -31,18 +18,7 @@ echo(styleTitreNiveau1($titreH1, COLOR_PENSIONNAIRE))
 
 <div class="row no-gutters">
     <?php foreach ($animaux as $animal) : ?>
-        <?php
-            $stmt = $bdd->prepare('SELECT i.id_image, libelle_image, url_image, description_image 
-                    FROM image i 
-                    INNER JOIN contient c ON i.id_image = c.id_image
-                    INNER JOIN animal a ON a.id_animal = c.id_animal
-                    WHERE a.id_animal = :idAnimal
-                    LIMIT 1');
-            $stmt->bindValue(":idAnimal", $animal['id_animal']);
-            $stmt->execute();
-            $image = $stmt->fetch(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
-        ?>
+        <?php $image = getFirstImageAnimal($animal['id_animal']); ?>
         
         <div class="col-12 col-lg-6">
             <div class="row border-dark rounded-lg m-2 align-items-center <?= ($animal['sexe']) ? "perso_bgBleu" : "perso_bgRose" ?>" style="height: 200px;">
@@ -77,17 +53,7 @@ echo(styleTitreNiveau1($titreH1, COLOR_PENSIONNAIRE))
                     <div class="perso_policeTitre perso_size20 mb-3"><?= $animal['nom_animal'] ?></div>
                     <div class="mb-2">Née : <?= $animal['date_naissance_animal'] ?></div>
                     
-                    <?php
-                        $stmt = $bdd->prepare( 'SELECT c.libelle_caractere_m, c.libelle_caractere_f 
-                        FROM caractere c 
-                        INNER JOIN dispose d ON c.id_caractere = d.id_caractere
-                        INNER JOIN animal a ON a.id_animal = d.id_animal
-                        WHERE a.id_animal = :idAnimal');
-                        $stmt->bindValue(":idAnimal", $animal['id_animal']);
-                        $stmt->execute();
-                        $caracteres = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        $stmt->closeCursor();
-                    ?>
+                    <?php $caracteres = getCaracteresFromAnimal($animal['id_animal']);?>
 
                     <div class="my-3">
                         <?php foreach($caracteres as $caractere) : ?>
